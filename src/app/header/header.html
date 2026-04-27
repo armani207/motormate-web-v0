@@ -1,0 +1,33 @@
+
+<header class="border-b p-4 bg-white relative z-50">
+  <!-- Top bar with logo + button -->
+  <div class="flex justify-between items-center relative z-50">
+    <span class="bg-[--brand] text-white hover:opacity-90 md:bg-[--brand] ">MM</span>
+    @if (!isMobileNavOpen && isMainNavVisible) {
+      <nav class="hidden md:flex space-x-4">
+          <a routerLink="/" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">Home</a>
+          <a routerLink="/about" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">About</a>
+          <a routerLink="/cp-catalog" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">CP Catalog</a>
+          <a routerLink="/motormate" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">MotorMate</a>
+          <a routerLink="/partner" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">Partner</a>
+          <a routerLink="/join" (click)="closeMobileNav()" class="px-3 py-2 rounded bg-[--brand] text-white hover:opacity-90 md:bg-[--brand] md:hover:opacity-80 md:px-4 md:py-1">Join</a>
+      </nav>
+    }
+  </div>
+  <button (click)="toggleMobileNav(); toggleMainNavDisplay()"
+          class="md:hidden p-2 border rounded"
+          aria-label="MotorMate Home">☰</button>
+  @if (isMobileNavOpen) {
+    <!-- ✅ MOBILE NAV: now absolutely positioned, outside flex container -->
+      <nav class="flex flex-col items-start space-y-2">
+        <a routerLink="/" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">Home</a>
+        <a routerLink="/about" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">About</a>
+        <a routerLink="/cp-catalog" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">CP Catalog</a>
+        <a routerLink="/motormate" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">MotorMate</a>
+        <a routerLink="/partner" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">Partner</a>
+        <a routerLink="/join" (click)="closeMobileNav()" class="px-3 py-2 rounded bg-[--brand] text-white hover:opacity-90">Join</a>
+      </nav>
+
+  }
+</header>
+

@@ -1,0 +1,7 @@
+{
+  "New York, NY, USA": { "lat": 40.7128, "lon": -74.0060 },
+  "Los Angeles, CA, USA": { "lat": 34.0522, "lon": -118.2437 },
+  "Chicago, IL, USA": { "lat": 41.8781, "lon": -87.6298 },
+  "Houston, TX, USA": { "lat": 29.7604, "lon": -95.3698 },
+  "Phoenix, AZ, USA": { "lat": 33.4484, "lon": -112.074 }
+}

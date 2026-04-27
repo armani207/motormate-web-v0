@@ -1,1 +1,442 @@
-/* You can add global styles to this file, and also import other style files */
+/* Root colors */
+:root {
+  --brand: #0f3d91;
+  --accent: #7c3aed;
+  --slate-900: #0f172a;
+  --slate-700: #334155;
+  --slate-300: #cbd5e1;
+  --sky-50: #f0f9ff;
+  --white: #ffffff;
+  --indigo-50: #eef2ff;
+}
+
+/* Global resets and font */
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  margin: 0;
+  background: var(--white);
+  color: var(--slate-900);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Utility classes */
+.max-w-5xl {
+  max-width: 64rem; /* ~1024px */
+  margin-left: auto;
+  margin-right: auto;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.sm\:px-6 {
+  /* Media query at 640px */
+}
+.lg\:px-8 {
+  /* Media query at 1024px */
+}
+@media (min-width: 640px) {
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.py-14 {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.border {
+  border: 1px solid var(--slate-300);
+}
+
+.border-y {
+  border-top: 1px solid var(--slate-300);
+  border-bottom: 1px solid var(--slate-300);
+}
+
+.border-t {
+  border-top: 1px solid var(--slate-300);
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-slate-50 {
+  background-color: var(--sky-50);
+}
+
+.bg-indigo-50 {
+  background-color: var(--indigo-50);
+}
+
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, var(--sky-50), var(--white));
+}
+
+.bg-gradient-to-r {
+  background: linear-gradient(to right, var(--indigo-50), var(--sky-50));
+}
+
+.text-slate-900 {
+  color: var(--slate-900);
+}
+
+.text-slate-700 {
+  color: var(--slate-700);
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-5 {
+  margin-top: 1.25rem;
+}
+
+.max-w-prose {
+  max-width: 65ch;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.list-inside {
+  list-style-position: inside;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Grid for layout */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.md\:grid-cols-2 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.md\:grid-cols-3 {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Flex for buttons */
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.items-start {
+  align-items: start;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
+  gap: 2rem;
+}
+
+/* Buttons */
+a {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.bg-\[--brand\] {
+  background-color: var(--brand);
+  color: white;
+}
+
+.bg-\[--brand\]:hover,
+a.bg-\[--brand\]:hover {
+  opacity: 0.9;
+}
+
+.bg-white {
+  background-color: var(--white);
+  color: var(--slate-900);
+}
+
+.border-slate-300 {
+  border-color: var(--slate-300);
+}
+
+.hover\:bg-slate-50:hover {
+  background-color: var(--sky-50);
+}
+
+.px-5 {
+  padding-left: 2.25rem;
+  padding-right: 2.25rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+/* Details */
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
+/* Space-y for vertical spacing */
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+/* Text color variable */
+.text-brand {
+  color: var(--brand);
+}
+
+.text-white {
+  color: white;
+}
+
+/* Custom class for brand text */
+.text-3xl.font-bold.text-brand {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+
+/* Header container */
+header {
+  border-bottom: 1px solid var(--slate-300);
+  background-color: var(--white);
+  padding: 1rem; /* p-4 */
+  position: relative;
+  z-index: 50;
+}
+
+/* Flex container inside header */
+header > div.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand/title */
+header h4 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 700; /* font-bold */
+  color: var(--slate-900);
+  margin: 0;
+}
+
+/* Mobile nav toggle button */
+header button {
+  padding: 0.5rem; /* p-2 */
+  border: 1px solid var(--slate-300);
+  border-radius: 0.375rem; /* rounded */
+  background-color: var(--white);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hide toggle button on md and up */
+@media (min-width: 768px) {
+  header button {
+    display: none;
+  }
+}
+
+/* Hover and focus states for button */
+header button:hover,
+header button:focus {
+  background-color: var(--sky-50);
+  border-color: var(--brand);
+  outline: none;
+}
+
+/* Mobile Nav Container */
+header > div.mt-2 {
+  margin-top: 0.5rem;
+  background-color: #f1f5f9; /* gray-100 */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Mobile nav menu */
+nav.flex.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  gap: 0.5rem;
+  width: max-content; /* ✅ Shrink to fit widest item */
+  max-width: 100%; /* Prevent overflow on very long items */
+}
+
+/* Mobile nav links */
+nav a {
+  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  border-radius: 0.375rem;
+  text-decoration: none;
+  color: var(--slate-900);
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: inline-block;
+}
+
+/* Hover background for mobile nav links */
+nav a:hover,
+nav a:focus {
+  background-color: var(--sky-50); /* slate-100 */
+  outline: none;
+}
+
+/* Brand buttons in mobile nav (Join, Privacy, Contact) */
+nav a.bg-\[--brand\] {
+  background-color: var(--brand);
+  color: white;
+}
+
+nav a.bg-\[--brand\]:hover,
+nav a.bg-\[--brand\]:focus {
+  opacity: 0.9;
+  background-color: var(--brand);
+}
+
+/* Optional: smooth dropdown animation */
+header > div.mt-2 {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-10px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.responsive-img {
+  width: 30%;
+  padding: 1.5rem;
+  height: auto;
+}
+
+.copyright {
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+}

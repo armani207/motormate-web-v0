@@ -1,0 +1,66 @@
+{
+  "New York, NY, United States": {
+    "lat": 40.7127281,
+    "lon": -74.0060152
+  },
+  "Albany, NY, United States": {
+    "lat": 42.6511674,
+    "lon": -73.754968
+  },
+  "kansas city, missouri, United States": {
+    "lat": 39.100105,
+    "lon": -94.5781416
+  },
+  "muskegon, Michigan, United States": {
+    "lat": 43.2341813,
+    "lon": -86.2483921
+  },
+  "chicago, illinois, United States": {
+    "lat": 41.8755616,
+    "lon": -87.6244212
+  },
+  "san francisco, ca, United States": {
+    "lat": 37.7792588,
+    "lon": -122.4193286
+  },
+  "kansas, kansas, United States": {
+    "lat": 38.9535052,
+    "lon": -95.2630922
+  },
+  "newark, new jersey, United States": {
+    "lat": 40.735657,
+    "lon": -74.1723667
+  },
+  "Ann Arbor, Michigan, United States": {
+    "lat": 42.2813722,
+    "lon": -83.7484616
+  },
+  "Rochester, Minnesota, United States": {
+    "lat": 44.0234387,
+    "lon": -92.4630182
+  },
+  "Commerce Township, Michigan, United States": {
+    "lat": 42.5911431,
+    "lon": -83.4907721
+  },
+  "key west, florida, United States": {
+    "lat": 24.5548262,
+    "lon": -81.8020722
+  },
+  "cleveland, ohio, United States": {
+    "lat": 41.4996574,
+    "lon": -81.6936772
+  },
+  "london, ohio, United States": {
+    "lat": 39.8864493,
+    "lon": -83.448253
+  },
+  "miami, florida, United States": {
+    "lat": 25.7741566,
+    "lon": -80.1935973
+  },
+  "Atlanta, Georgia, United States": {
+    "lat": 33.7544657,
+    "lon": -84.3898151
+  }
+}

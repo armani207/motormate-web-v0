@@ -1,0 +1,70 @@
+.calc-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 360px; /* about iframe width */
+  margin: 0 auto;
+}
+
+.calc-card {
+  background: white;
+  border: 1.5px solid #1c3c72; /* close to iframe border color */
+  border-radius: 16px;
+  padding: 24px 32px 24px 24px;
+  width: 240px; /* narrower to match iframe approx width */
+  box-sizing: border-box;
+  box-shadow: rgba(0,0,0,0.08) 0 2px 6px;
+}
+
+.card-caption {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: #1c3c72; /* darker blue, matches text */
+}
+
+.stat {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #475569; /* slate 700 */
+  margin-bottom: 6px;
+}
+
+.value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1c3c72;
+}
+
+.big-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #1c3c72;
+  min-width: 80px;
+  text-align: left;
+}
+
+/* Responsive: on smaller screens stack vertically and center */
+@media (max-width: 768px) {
+  .calc-wrapper {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .big-number {
+    min-width: auto;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .calc-card {
+    width: 100%;
+    max-width: 360px;
+    padding: 24px;
+  }
+}

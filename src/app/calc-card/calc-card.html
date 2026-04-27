@@ -1,0 +1,20 @@
+<div class="calc-wrapper">
+  <!-- Card -->
+  <div class="calc-card">
+    <!-- Caption -->
+    <h3 class="card-caption">Living with CP</h3>
+    <div class="stat">
+      <span class="label">Current Population</span>
+      <span class="value">{{ cpPopulation | number }}</span>
+    </div>
+    <div class="stat">
+      <span class="label">Births Today</span>
+      <span class="value">{{ cpBirthsToday | number }}</span>
+    </div>
+  </div>
+
+  <!-- Large formatted value -->
+  <div class="big-number">
+    {{ formatLarge(cpPopulation) }}
+  </div>
+</div>

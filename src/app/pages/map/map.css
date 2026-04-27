@@ -1,0 +1,25 @@
+.custom-div-icon .pin-count {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.city-list {
+  margin-top: 1em;
+  padding: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+.city-list h4 {
+  margin: 0 0 0.5em 0;
+}
+.city-list ul {
+  margin: 0;
+  padding-left: 1.2em;
+}

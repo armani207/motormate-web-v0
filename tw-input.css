@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Then your custom CSS */
+:root {
+  --brand: #0f3d91;
+  --accent: #7c3aed;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/Inter‑Regular.woff2') format('woff2');
+}
+/* … other @font‑face rules … */
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans";
+}
+

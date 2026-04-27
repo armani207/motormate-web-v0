@@ -1,0 +1,10 @@
+<!-- Map container -->
+<div id="map" style="height: 500px;"></div>
+
+<!-- List of cities and member names -->
+<div *ngFor="let city of cityNamesList" class="city-list">
+  <h4>{{ city.key }} (Members: {{ city.names.length }})</h4>
+  <ul>
+    <li *ngFor="let name of city.names">{{ name }}</li>
+  </ul>
+</div>
