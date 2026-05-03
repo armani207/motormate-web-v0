@@ -1,0 +1,77 @@
+:host {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.counter-container {
+  position: relative;
+  display: inline-block;
+}
+
+.counter-counter {
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  line-height: 1;
+}
+
+.counter-digit {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1ch;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-digit--dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.45ch;
+}
+
+.counter-digit-inner {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transition: none;
+}
+
+.counter-number {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.counter-suffix {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.gradient-container {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.top-gradient {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.bottom-gradient {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counter-digit-inner {
+    will-change: auto;
+  }
+}

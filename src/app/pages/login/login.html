@@ -1,0 +1,183 @@
+<main>
+  <section class="hero page-hero-premium">
+    <div class="container container-narrow page-hero-inner motion-buffer">
+      <img
+        src="/motormate-logo.png"
+        alt="MotorMate Health logo"
+        class="hero-logo page-hero-logo page-hero-logo--tight"
+        width="140"
+        height="140"
+        decoding="async"
+      />
+      <span class="eyebrow eyebrow--on-dark">Members area</span>
+      <h1 class="page-title page-title--on-dark">{{ mode() === 'signup' ? 'Join the CP network.' : 'Sign in to MotorMate.' }}</h1>
+      <p class="subhead subhead--on-dark">
+        Create an account to add yourself to the community map, manage your CP catalog entry, and stay in the loop on
+        pilots, awareness data, and rehab hardware updates.
+      </p>
+
+      <div class="auth-tabs" role="tablist" aria-label="Sign in or create an account">
+        <button
+          type="button"
+          role="tab"
+          [attr.aria-selected]="mode() === 'login'"
+          [class.active]="mode() === 'login'"
+          (click)="setMode('login')"
+        >
+          Sign in
+        </button>
+        <button
+          type="button"
+          role="tab"
+          [attr.aria-selected]="mode() === 'signup'"
+          [class.active]="mode() === 'signup'"
+          (click)="setMode('signup')"
+        >
+          Create account
+        </button>
+      </div>
+
+      <form class="card auth-card" (ngSubmit)="onSubmit()" novalidate>
+        @if (mode() === 'signup') {
+          <label class="form-field">
+            <span>Name</span>
+            <input
+              type="text"
+              name="name"
+              autocomplete="name"
+              class="form-control"
+              [(ngModel)]="name"
+              placeholder="Your name (or how you'd like to be listed)"
+              required
+            />
+          </label>
+        }
+
+        <label class="form-field">
+          <span>Email</span>
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            inputmode="email"
+            class="form-control"
+            [(ngModel)]="email"
+            placeholder="you@example.com"
+            required
+          />
+        </label>
+
+        <label class="form-field">
+          <span>Password</span>
+          <input
+            type="password"
+            name="password"
+            [attr.autocomplete]="mode() === 'signup' ? 'new-password' : 'current-password'"
+            class="form-control"
+            [(ngModel)]="password"
+            [attr.minlength]="mode() === 'signup' ? 8 : null"
+            placeholder="At least 8 characters"
+            required
+          />
+        </label>
+
+        @if (mode() === 'signup') {
+          <div class="auth-section-title">
+            <strong>Add your map pin</strong>
+            <span>This creates your first public pin right after signup. You can edit or remove it later.</span>
+          </div>
+
+          <div class="form-grid two-col">
+            <label class="form-field">
+              <span>Role</span>
+              <input
+                type="text"
+                name="role"
+                autocomplete="organization-title"
+                class="form-control"
+                [(ngModel)]="role"
+                placeholder="Caregiver, clinician, advocate…"
+              />
+            </label>
+
+            <label class="form-field">
+              <span>City *</span>
+              <input
+                type="text"
+                name="city"
+                autocomplete="address-level2"
+                class="form-control"
+                [(ngModel)]="city"
+                placeholder="Detroit"
+                required
+              />
+            </label>
+          </div>
+
+          <div class="form-grid two-col">
+            <label class="form-field">
+              <span>State / region</span>
+              <input
+                type="text"
+                name="state"
+                autocomplete="address-level1"
+                class="form-control"
+                [(ngModel)]="state"
+                placeholder="Michigan"
+              />
+            </label>
+
+            <label class="form-field">
+              <span>Country *</span>
+              <input
+                type="text"
+                name="country"
+                autocomplete="country-name"
+                class="form-control"
+                [(ngModel)]="country"
+                placeholder="United States"
+                required
+              />
+            </label>
+          </div>
+
+          <label class="form-field">
+            <span>Short note</span>
+            <textarea
+              name="notes"
+              rows="3"
+              class="form-control"
+              [(ngModel)]="notes"
+              maxlength="800"
+              placeholder="Optional: why you're joining the MotorMate CP network"
+            ></textarea>
+          </label>
+        }
+
+        @if (errorMessage()) {
+          <p class="auth-error" role="alert">{{ errorMessage() }}</p>
+        }
+
+        <div class="btn-row">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [attr.aria-busy]="isSubmitting() ? 'true' : null"
+            [disabled]="isSubmitting()"
+          >
+            @if (isSubmitting()) {
+              <span class="btn-spinner" aria-hidden="true"></span>
+            }
+            {{ mode() === 'signup' ? 'Create account + map pin' : 'Sign in' }}
+          </button>
+          <a class="btn btn-secondary" routerLink="/cp-catalog">Browse the network</a>
+        </div>
+
+        <p class="muted small auth-footnote">
+          By creating an account and map pin, you agree to MotorMate sharing your display name, role, city, state, and
+          country on the community map. You can edit or remove your pin from your account page.
+        </p>
+      </form>
+    </div>
+  </section>
+</main>

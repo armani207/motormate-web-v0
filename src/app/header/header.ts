@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,18 +11,42 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class Header {
   isMobileNavOpen = false;
-  isMainNavVisible = true;
-  constructor(private router: Router) {}
+  isScrolled = false;
 
-  toggleMobileNav() {
-    this.isMobileNavOpen = !this.isMobileNavOpen;
+  constructor(
+    private readonly router: Router,
+    public readonly auth: AuthService
+  ) {}
+
+  @HostListener('window:scroll')
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 12;
   }
 
-  toggleMainNavDisplay() {
-    this.isMainNavVisible = !this.isMainNavVisible;
+  toggleMobileNav() {
+    this.setMobileNav(!this.isMobileNavOpen);
   }
 
   closeMobileNav() {
-    this.isMobileNavOpen = false;
+    this.setMobileNav(false);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.isMobileNavOpen) this.setMobileNav(false);
+  }
+
+  signOut() {
+    this.auth.logout().subscribe(() => {
+      this.closeMobileNav();
+      this.router.navigateByUrl('/');
+    });
+  }
+
+  private setMobileNav(open: boolean) {
+    this.isMobileNavOpen = open;
+    if (typeof document !== 'undefined') {
+      document.body.classList.toggle('nav-open', open);
+    }
   }
 }

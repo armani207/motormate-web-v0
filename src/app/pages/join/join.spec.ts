@@ -1,4 +1,6 @@
+import { provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Join } from './join';
 
@@ -8,7 +10,8 @@ describe('Join', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Join]
+      imports: [Join],
+      providers: [provideZonelessChangeDetection(), provideRouter([])]
     })
     .compileComponents();
 

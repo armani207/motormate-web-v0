@@ -1,5 +1,68 @@
+.leaflet-member-map {
+  display: block;
+  width: 100%;
+  min-height: 26rem;
+  height: clamp(26rem, 58vw, 42rem);
+}
+
+.map-shell {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 20rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-blue);
+  transition:
+    transform 240ms var(--ease-emphasized),
+    box-shadow var(--duration) var(--ease-standard),
+    border-color var(--duration) var(--ease-standard);
+}
+
+.map-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: 401;
+  content: "";
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgb(15 92 122 / calc(var(--glow-intensity) * 0.16)) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.map-shell:hover {
+  border-color: rgb(15 92 122 / 0.18);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-loading-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 500;
+  display: grid;
+  place-items: stretch;
+  padding: 0;
+  background: rgb(232 242 247 / 0.84);
+  pointer-events: none;
+}
+
+.map-loading-overlay .skeleton {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+}
+
+.map-shell-loading .leaflet-member-map {
+  opacity: 0.35;
+}
+
 .custom-div-icon .pin-count {
-  background-color: #007bff;
+  background-color: var(--brand);
   color: white;
   font-weight: bold;
   border-radius: 50%;
@@ -11,15 +74,36 @@
   border: 2px solid white;
 }
 
-.city-list {
-  margin-top: 1em;
-  padding: 0.5em;
-  border-bottom: 1px solid #ccc;
+.community-pin-icon span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgb(16 32 51 / 0.3);
+  transform: translate(2px, 2px);
 }
-.city-list h4 {
-  margin: 0 0 0.5em 0;
+
+.community-pin-icon.is-owner span {
+  background: var(--brand);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
-.city-list ul {
-  margin: 0;
-  padding-left: 1.2em;
+
+.community-pin-popup strong {
+  font-size: 1rem;
+}
+
+.community-pin-popup .pill {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: rgb(15 92 122 / 0.1);
+  color: var(--brand-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }

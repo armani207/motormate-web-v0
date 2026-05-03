@@ -1,0 +1,24 @@
+<span class="counter-container">
+  <span class="counter-counter" [ngStyle]="counterStyle">
+    @for (place of resolvedPlaces; track $index) {
+      @if (place === '.') {
+        <span class="counter-digit counter-digit--dot" [style.height.px]="digitHeight">.</span>
+      } @else {
+        <span class="counter-digit" [style.height.px]="digitHeight">
+          <span class="counter-digit-inner" [style.transform]="'translateY(' + translateY($index) + ')'">
+            @for (d of digitStrip; track d) {
+              <span class="counter-number" [style.height.px]="digitHeight">{{ d }}</span>
+            }
+          </span>
+        </span>
+      }
+    }
+    @if (suffix) {
+      <span class="counter-suffix" [style.lineHeight.px]="digitHeight">{{ suffix }}</span>
+    }
+  </span>
+  <span class="gradient-container" aria-hidden="true">
+    <span class="top-gradient" [ngStyle]="topGradientStyle"></span>
+    <span class="bottom-gradient" [ngStyle]="bottomGradientStyle"></span>
+  </span>
+</span>

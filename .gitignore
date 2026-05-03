@@ -38,6 +38,9 @@ testem.log
 /typings
 __screenshots__/
 
+# Local server-side stores (auth users, sessions, community pins)
+/data
+
 # System files
 .DS_Store
 Thumbs.db
