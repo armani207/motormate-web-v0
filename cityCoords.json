@@ -39,6 +39,14 @@
     "lat": 44.0234387,
     "lon": -92.4630182
   },
+  "Saint Paul, Minnesota, United States": {
+    "lat": 44.9504037,
+    "lon": -93.1015026
+  },
+  "Detroit, Michigan, United States": {
+    "lat": 42.3315509,
+    "lon": -83.0466403
+  },
   "Commerce Township, Michigan, United States": {
     "lat": 42.5911431,
     "lon": -83.4907721
@@ -62,5 +70,9 @@
   "Atlanta, Georgia, United States": {
     "lat": 33.7544657,
     "lon": -84.3898151
+  },
+  "Cleveland, Ohio, United States": {
+    "lat": 41.4996574,
+    "lon": -81.6936772
   }
 }

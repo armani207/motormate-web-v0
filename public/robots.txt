@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://motormate.health/sitemap.xml

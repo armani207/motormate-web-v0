@@ -1,0 +1,161 @@
+<main>
+  <section class="hero page-hero-premium">
+    <div class="container container-narrow page-hero-inner motion-buffer">
+      <img
+        src="/motormate-logo.png"
+        alt="MotorMate Health logo"
+        class="hero-logo page-hero-logo page-hero-logo--tight"
+        width="140"
+        height="140"
+        decoding="async"
+      />
+      <span class="eyebrow eyebrow--on-dark">Your account</span>
+      <h1 class="page-title page-title--on-dark">
+        @if (auth.user()) {
+          Welcome, {{ auth.user()!.name }}.
+        } @else {
+          Manage your community pin.
+        }
+      </h1>
+      <p class="subhead subhead--on-dark">
+        Your pin lets families, clinicians, researchers, and pilot partners see that you're part of the MotorMate
+        network. We only display the city/state/country you enter — never the email you used to sign in.
+      </p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" type="button" (click)="signOut()">Sign out</button>
+        <a class="btn btn-secondary btn-secondary--on-dark" routerLink="/map">View community map</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-compact">
+    <div class="container container-narrow">
+      @if (isLoading()) {
+        <div class="card">
+          <div class="skeleton" style="height: 1rem; width: 7rem;"></div>
+          <div class="skeleton" style="height: 1.4rem; width: 65%; margin-top: 0.9rem;"></div>
+          <div class="skeleton" style="height: 4.25rem; width: 100%; margin-top: 1rem;"></div>
+        </div>
+      } @else {
+        <form class="card account-card" (ngSubmit)="savePin()" novalidate>
+          <header class="account-card-head">
+            <h2 style="margin:0;">{{ pin() ? 'Update your pin' : 'Add your pin to the map' }}</h2>
+            @if (pin()) {
+              <span class="pill">{{ pin()!.isPublic ? 'Public' : 'Hidden from public map' }}</span>
+            }
+          </header>
+
+          <div class="grid two-col">
+            <label class="form-field">
+              <span>Display name</span>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                [(ngModel)]="form.name"
+                placeholder="Shown on your pin (e.g. ‘Sarah M.’)"
+              />
+            </label>
+            <label class="form-field">
+              <span>Role</span>
+              <input
+                type="text"
+                name="role"
+                class="form-control"
+                [(ngModel)]="form.role"
+                placeholder="Caregiver, clinician, advocate, researcher…"
+              />
+            </label>
+          </div>
+
+          <div class="grid three-col">
+            <label class="form-field">
+              <span>City *</span>
+              <input
+                type="text"
+                name="city"
+                class="form-control"
+                [(ngModel)]="form.city"
+                required
+                placeholder="Ann Arbor"
+              />
+            </label>
+            <label class="form-field">
+              <span>State / region</span>
+              <input
+                type="text"
+                name="state"
+                class="form-control"
+                [(ngModel)]="form.state"
+                placeholder="Michigan"
+              />
+            </label>
+            <label class="form-field">
+              <span>Country</span>
+              <input
+                type="text"
+                name="country"
+                class="form-control"
+                [(ngModel)]="form.country"
+                placeholder="United States"
+              />
+            </label>
+          </div>
+
+          <label class="form-field">
+            <span>Why you're here (optional)</span>
+            <textarea
+              name="notes"
+              rows="4"
+              class="form-control"
+              [(ngModel)]="form.notes"
+              maxlength="800"
+              placeholder="A short note shown on your pin: family experience with CP, pilot interest, research focus, etc."
+            ></textarea>
+          </label>
+
+          <label class="form-checkbox">
+            <input type="checkbox" name="isPublic" [(ngModel)]="form.isPublic" />
+            <span>Show my pin publicly on the community map.</span>
+          </label>
+
+          @if (errorMessage()) {
+            <p class="auth-error" role="alert">{{ errorMessage() }}</p>
+          }
+          @if (successMessage()) {
+            <p class="auth-success" role="status">{{ successMessage() }}</p>
+          }
+
+          <div class="btn-row">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [attr.aria-busy]="isSaving() ? 'true' : null"
+              [disabled]="isSaving()"
+            >
+              @if (isSaving()) {
+                <span class="btn-spinner" aria-hidden="true"></span>
+              }
+              {{ pin() ? 'Save changes' : 'Add my pin' }}
+            </button>
+
+            @if (pin()) {
+              <button
+                type="button"
+                class="btn btn-secondary"
+                (click)="removePin()"
+                [disabled]="isRemoving()"
+              >
+                @if (isRemoving()) {
+                  <span class="btn-spinner" aria-hidden="true"></span>
+                }
+                Remove my pin
+              </button>
+            }
+          </div>
+        </form>
+      }
+    </div>
+  </section>
+</main>

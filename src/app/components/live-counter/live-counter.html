@@ -1,0 +1,51 @@
+<article
+  #counterRoot
+  class="live-counter card"
+  [class.live-counter--dark]="tone === 'on-dark'"
+>
+  <div class="live-counter-topline">
+    <span><span class="live-pulse" aria-hidden="true"></span>{{ label }}</span>
+    @if (sourceDetail) {
+      <span class="source-tooltip" tabindex="0" aria-label="How this number is calculated">
+        ?
+        <span class="source-tooltip-panel">{{ sourceDetail }}</span>
+      </span>
+    }
+  </div>
+
+  <div
+    class="live-counter-value-wrap"
+    [class.live-counter-value-wrap--split]="millionsHeroEligible"
+  >
+    <app-animated-counter
+      class="live-counter-digits"
+      [class.live-counter-digits--with-millions]="millionsHeroEligible"
+      [value]="roundedValue"
+      [precision]="precision"
+      [suffix]="suffix"
+      [fontSize]="animatedDigitFontSize"
+      [padding]="animatedDigitPadding"
+      [gap]="animatedGap"
+      [horizontalPadding]="0"
+      [borderRadius]="0"
+      [textColor]="digitTextColor"
+      [fontWeight]="800"
+      [gradientFrom]="digitGradientFrom"
+      [gradientTo]="'transparent'"
+      [gradientHeight]="12"
+    />
+    @if (millionsHeroEligible) {
+      <span class="live-counter-millions" aria-hidden="true">{{ millionsAbbrev }}</span>
+    }
+  </div>
+
+  @if (description) {
+    <p>{{ description }}</p>
+  }
+
+  @if (sourceUrl && sourceLabel) {
+    <a [href]="sourceUrl" target="_blank" rel="noopener noreferrer">{{ sourceLabel }}</a>
+  } @else if (sourceLabel) {
+    <span class="live-counter-source">{{ sourceLabel }}</span>
+  }
+</article>

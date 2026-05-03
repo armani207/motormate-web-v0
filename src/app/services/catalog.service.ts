@@ -1,8 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { CatalogEntry } from '../models/allmodels';
 import { fallbackData } from '../utils/constants';
+
+export type CatalogLoadSource = 'network' | 'cache' | 'fallback';
+
+export interface CatalogLoadResult {
+  data: CatalogEntry[];
+  source: CatalogLoadSource;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +23,17 @@ export class CatalogService {
    * Fetch data from backend (Google Sheets via /api/data)
    * and cache results for later use.
    */
-  loadCatalog() {
+  loadCatalog(): Observable<CatalogLoadResult> {
     if (this.cache.length > 0) {
-      return of(this.cache);
+      return of({ data: this.cache, source: 'cache' as const });
     }
 
     return this.http.get<CatalogEntry[]>('/api/data').pipe(
       tap(data => (this.cache = data || [])),
-      catchError(err => {
-        console.error('Error loading /api/data. Falling back to empty list.', err);
-        return of(fallbackData); // optionally load from /assets/fallback.json
+      map(data => ({ data: data || [], source: 'network' as const })),
+      catchError(() => {
+        this.cache = fallbackData;
+        return of({ data: fallbackData, source: 'fallback' as const });
       })
     );
   }

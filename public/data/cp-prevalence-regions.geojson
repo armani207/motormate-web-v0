@@ -1,0 +1,99 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Regional cerebral palsy prevalence reference dataset",
+    "lastVerified": "2026-04-27",
+    "method": "Static regional GeoJSON used for choropleth display. Values are representative published prevalence ranges, not patient-level surveillance data.",
+    "sources": [
+      "CDC: Cerebral palsy affects about 1 in 345 children in the United States.",
+      "Cerebral Palsy Foundation: approximately 17 million people live with cerebral palsy worldwide.",
+      "Published population studies commonly report around 2-3.5 cerebral palsy cases per 1,000 live births, with regional variation."
+    ]
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "North America",
+        "prevalencePer1000": 2.9,
+        "childrenEstimate": "CDC reports about 1 in 345 U.S. children.",
+        "note": "Shown as a regional reference; surveillance systems differ by country.",
+        "source": "CDC ADDM Network"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-168, 14], [-52, 14], [-52, 72], [-168, 72], [-168, 14]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Latin America",
+        "prevalencePer1000": 2.5,
+        "childrenEstimate": "Estimated from published prevalence ranges by live births.",
+        "note": "Reliable country-level CP registries are limited across this region.",
+        "source": "Published prevalence reviews"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-118, -56], [-32, -56], [-32, 14], [-118, 14], [-118, -56]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Europe",
+        "prevalencePer1000": 2.1,
+        "childrenEstimate": "Estimated from CP registry prevalence ranges.",
+        "note": "Several European countries maintain mature CP surveillance registries.",
+        "source": "SCPE and published registry studies"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-12, 35], [42, 35], [42, 72], [-12, 72], [-12, 35]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Africa",
+        "prevalencePer1000": 3.5,
+        "childrenEstimate": "Estimated from higher published prevalence ranges where neonatal risk and care access vary.",
+        "note": "Measured prevalence can be undercounted where surveillance is limited.",
+        "source": "Published prevalence reviews"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-20, -35], [52, -35], [52, 35], [-20, 35], [-20, -35]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Asia",
+        "prevalencePer1000": 2.7,
+        "childrenEstimate": "Estimated from published prevalence ranges by live births.",
+        "note": "Large regional differences are expected; this is a broad reference band.",
+        "source": "Published prevalence reviews"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[42, -10], [150, -10], [150, 72], [42, 72], [42, -10]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Oceania",
+        "prevalencePer1000": 2.2,
+        "childrenEstimate": "Estimated from Australian and regional prevalence reporting.",
+        "note": "Australia has relatively strong CP registry reporting compared with many regions.",
+        "source": "Australian CP Register and published studies"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[110, -48], [180, -48], [180, -5], [110, -5], [110, -48]]]
+      }
+    }
+  ]
+}

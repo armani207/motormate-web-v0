@@ -1,33 +1,53 @@
+<header class="site-header" [class.site-header-scrolled]="isScrolled">
+  <div class="site-header-inner">
+    <a routerLink="/" class="brand-mark" aria-label="MotorMate Health home" (click)="closeMobileNav()">
+      <img
+        src="/motormate-logo.png"
+        alt=""
+        class="brand-logo"
+        width="44"
+        height="44"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <span class="brand-text">
+        <strong>MotorMate</strong>
+        <small>Health LLC</small>
+      </span>
+    </a>
 
-<header class="border-b p-4 bg-white relative z-50">
-  <!-- Top bar with logo + button -->
-  <div class="flex justify-between items-center relative z-50">
-    <span class="bg-[--brand] text-white hover:opacity-90 md:bg-[--brand] ">MM</span>
-    @if (!isMobileNavOpen && isMainNavVisible) {
-      <nav class="hidden md:flex space-x-4">
-          <a routerLink="/" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">Home</a>
-          <a routerLink="/about" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">About</a>
-          <a routerLink="/cp-catalog" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">CP Catalog</a>
-          <a routerLink="/motormate" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">MotorMate</a>
-          <a routerLink="/partner" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100 md:hover:bg-transparent md:hover:text-[--brand]">Partner</a>
-          <a routerLink="/join" (click)="closeMobileNav()" class="px-3 py-2 rounded bg-[--brand] text-white hover:opacity-90 md:bg-[--brand] md:hover:opacity-80 md:px-4 md:py-1">Join</a>
-      </nav>
-    }
+    <button
+      class="menu-toggle"
+      type="button"
+      [class.is-open]="isMobileNavOpen"
+      (click)="toggleMobileNav()"
+      [attr.aria-expanded]="isMobileNavOpen"
+      aria-controls="primary-navigation"
+      [attr.aria-label]="isMobileNavOpen ? 'Close menu' : 'Open menu'"
+    >
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
   </div>
-  <button (click)="toggleMobileNav(); toggleMainNavDisplay()"
-          class="md:hidden p-2 border rounded"
-          aria-label="MotorMate Home">☰</button>
-  @if (isMobileNavOpen) {
-    <!-- ✅ MOBILE NAV: now absolutely positioned, outside flex container -->
-      <nav class="flex flex-col items-start space-y-2">
-        <a routerLink="/" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">Home</a>
-        <a routerLink="/about" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">About</a>
-        <a routerLink="/cp-catalog" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">CP Catalog</a>
-        <a routerLink="/motormate" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">MotorMate</a>
-        <a routerLink="/partner" (click)="closeMobileNav()" class="px-3 py-2 rounded hover:bg-slate-100">Partner</a>
-        <a routerLink="/join" (click)="closeMobileNav()" class="px-3 py-2 rounded bg-[--brand] text-white hover:opacity-90">Join</a>
-      </nav>
 
-  }
+  <nav
+    id="primary-navigation"
+    class="overlay-nav"
+    [class.is-open]="isMobileNavOpen"
+    aria-label="Primary navigation"
+    [attr.aria-hidden]="!isMobileNavOpen"
+  >
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMobileNav()">Home</a>
+    <a routerLink="/motormate" routerLinkActive="active" (click)="closeMobileNav()">Device</a>
+    <a routerLink="/cp-catalog" routerLinkActive="active" (click)="closeMobileNav()">Network</a>
+    <a routerLink="/map" routerLinkActive="active" (click)="closeMobileNav()">Map</a>
+    <a routerLink="/about" routerLinkActive="active" (click)="closeMobileNav()">Company</a>
+    <a routerLink="/partner" routerLinkActive="active" (click)="closeMobileNav()">Partner</a>
+    @if (auth.isAuthenticated()) {
+      <a routerLink="/account" class="nav-cta" routerLinkActive="active" (click)="closeMobileNav()">Account</a>
+      <button type="button" class="nav-signout" (click)="signOut()">Sign out</button>
+    } @else {
+      <a routerLink="/login" class="nav-cta" routerLinkActive="active" (click)="closeMobileNav()">Sign in</a>
+    }
+  </nav>
 </header>
-

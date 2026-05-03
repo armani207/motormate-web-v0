@@ -1,10 +1,111 @@
-<!-- Map container -->
-<div id="map" style="height: 500px;"></div>
+<main>
+  <section class="hero page-hero-premium">
+    <div class="container page-hero-inner motion-buffer">
+      <img
+        src="/motormate-logo.png"
+        alt="MotorMate Health logo"
+        class="hero-logo page-hero-logo page-hero-logo--tight"
+        width="140"
+        height="140"
+        decoding="async"
+      />
+      <span class="eyebrow eyebrow--on-dark">Community map</span>
+      <h1 class="page-title page-title--on-dark">See where the CP network is forming.</h1>
+      <p class="subhead subhead--on-dark">
+        Public, consented entries are summarized by location. Sign in to add your own pin — we show city/state/country,
+        never your email.
+      </p>
+      <div class="btn-row">
+        @if (auth.isAuthenticated()) {
+          <a class="btn btn-primary" routerLink="/account">Add or update my pin</a>
+        } @else {
+          <a class="btn btn-primary" [routerLink]="['/login']" [queryParams]="{ mode: 'signup', redirect: '/account' }">
+            Sign up to add your pin
+          </a>
+          <a class="btn btn-secondary btn-secondary--on-dark" [routerLink]="['/login']" [queryParams]="{ redirect: '/account' }">
+            Sign in
+          </a>
+        }
+      </div>
+      @if (loadedFromFallback) {
+        <p class="small" style="margin: 1rem 0 0; color: rgb(203 213 225);">Limited data (fallback)</p>
+      }
+    </div>
+  </section>
 
-<!-- List of cities and member names -->
-<div *ngFor="let city of cityNamesList" class="city-list">
-  <h4>{{ city.key }} (Members: {{ city.names.length }})</h4>
-  <ul>
-    <li *ngFor="let name of city.names">{{ name }}</li>
-  </ul>
-</div>
+  <section class="section-compact">
+    <div class="container">
+      <section class="card motion-buffer">
+
+  @if (errorMessage) {
+    <div class="card" role="alert" style="margin-top:1.25rem;">
+      <h3 style="margin-top:0;">Map unavailable</h3>
+      <p class="muted">{{ errorMessage }}</p>
+    </div>
+  } @else {
+    <div class="map-shell" [class.map-shell-loading]="isLoading" style="margin-top:1.25rem;">
+      @if (isLoading) {
+        <div class="map-loading-overlay" aria-hidden="true">
+          <div class="skeleton"></div>
+        </div>
+      }
+      <div id="map" class="leaflet-member-map"></div>
+    </div>
+
+    <div class="grid four-col motion-buffer" style="margin-top:1.25rem;">
+      <div class="stat-card">
+        <span class="stat-value">{{ totalMembers }}</span>
+        <span class="stat-label">Catalog members mapped</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{{ totalLocations }}</span>
+        <span class="stat-label">Catalog locations</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{{ communityPinCount }}</span>
+        <span class="stat-label">Community pins</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">{{ isLoading ? '—' : (geocodedLocations + '/' + totalLocations) }}</span>
+        <span class="stat-label">Locations geocoded</span>
+      </div>
+    </div>
+
+    @if (!isLoading && communityPins.length) {
+      <div style="margin-top:1.35rem;">
+        <h3 style="margin:0;">Community members</h3>
+        <p class="muted" style="margin:0.5rem 0 0;">Self-added pins from signed-in members.</p>
+        <div class="grid two-col motion-buffer" style="margin-top:1rem;">
+          <article class="stat-card" *ngFor="let pin of communityPins">
+            <span class="stat-label">{{ pin.role || 'Member' }}{{ pin.isOwner ? ' · You' : '' }}</span>
+            <span class="stat-value" style="font-size:1.4rem;">{{ pin.displayName }}</span>
+            <p class="muted small" style="margin:0.3rem 0 0;">
+              {{ [pin.city, pin.state, pin.country].filter(Boolean).join(', ') || 'Location withheld' }}
+            </p>
+            @if (pin.notes) {
+              <p class="muted small" style="margin:0.4rem 0 0;">{{ pin.notes }}</p>
+            }
+          </article>
+        </div>
+      </div>
+    }
+
+    @if (!isLoading && citySummaries.length) {
+      <div style="margin-top:1.35rem;">
+        <h3 style="margin:0;">Catalog locations</h3>
+        <p class="muted" style="margin:0.5rem 0 0;">
+          Counts are grouped by city/state/country when available.
+        </p>
+        <div class="grid two-col motion-buffer" style="margin-top:1rem;">
+          <div *ngFor="let city of citySummaries" class="stat-card">
+            <span class="stat-label">{{ city.key }}</span>
+            <span class="stat-value" style="font-size:2.1rem;">{{ city.count }}</span>
+          </div>
+        </div>
+      </div>
+    }
+  }
+      </section>
+    </div>
+  </section>
+</main>

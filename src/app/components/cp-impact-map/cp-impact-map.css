@@ -1,0 +1,65 @@
+.impact-map {
+  display: grid;
+  gap: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+}
+
+.impact-map-copy {
+  padding: clamp(0.5rem, 2vw, 1rem);
+}
+
+.impact-map-copy .section-title {
+  margin-top: 0.9rem;
+  max-width: 12ch;
+}
+
+.map-shell {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 20rem;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-blue);
+  transition:
+    transform 240ms var(--ease-emphasized),
+    box-shadow var(--duration) var(--ease-standard),
+    border-color var(--duration) var(--ease-standard);
+}
+
+.map-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: 401;
+  content: "";
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgb(15 92 122 / calc(var(--glow-intensity) * 0.16)) 0%,
+    transparent 62%
+  );
+  pointer-events: none;
+}
+
+.map-shell:hover {
+  border-color: rgb(15 92 122 / 0.18);
+  box-shadow: var(--shadow-sm);
+}
+
+.leaflet-prevalence-map {
+  min-height: clamp(22rem, 54vw, 32rem);
+}
+
+.map-source {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.88rem;
+  padding-inline: clamp(0.5rem, 2vw, 1rem);
+}
+
+.map-source code {
+  color: var(--brand-dark);
+  font-weight: 800;
+}

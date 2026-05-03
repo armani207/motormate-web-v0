@@ -1,102 +1,188 @@
+<main>
+  <section class="hero hero-premium">
+    <div class="hero-backdrop" aria-hidden="true">
+      <app-floating-lines
+        [linesGradient]="heroLinesGradient"
+        [lineCount]="[8, 12, 16]"
+        [animationSpeed]="1"
+        [bendRadius]="5"
+        [bendStrength]="-0.48"
+        [mouseDamping]="0.06"
+        [parallaxStrength]="0.18"
+        [mixBlendMode]="'screen'"
+      />
+    </div>
 
-  <!-- Hero -->
-  <main>
-    <section class="relative overflow-hidden">
-      <div class="absolute -z-10 inset-0 bg-gradient-to-br from-sky-100 via-indigo-50 to-white"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-slate-900">Connecting the CP Community & Scaling Pediatric Rehab Innovation</h1>
-          <p class="mt-4 text-lg text-slate-700 max-w-prose">We bring families, clinicians, and innovators together through our live <span class="font-semibold">CP Catalog</span>, secure intake, and <span class="font-semibold">MotorMate</span> — a patent‑pending, sensor‑powered therapy device blending precision, play, and progress.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a class="bg-[--brand] text-white px-5 py-3 rounded-xl hover:opacity-90" href="/cp-catalog">Explore CP Catalog</a>
-            <a class="bg-white border border-slate-300 px-5 py-3 rounded-xl hover:bg-slate-50" href="/motormate">Learn About MotorMate</a>
-            <a class="bg-indigo-600 text-white px-5 py-3 rounded-xl hover:opacity-90" href="/join">Join the Community</a>
-          </div>
-          <div>
-            <p class="mt-3 text-sm text-slate-500 ">HIPAA‑friendly workflows • De‑identified analytics by default • Consent‑first design</p>
-          </div>
+    <div class="container hero-premium-inner split">
+      <div class="motion-buffer hero-copy">
+        <img
+          src="/motormate-logo.png"
+          alt="MotorMate Health logo"
+          class="hero-logo hero-logo--premium"
+          width="140"
+          height="140"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <span class="eyebrow eyebrow--on-dark">MotorMate Health</span>
+        <h1 class="display display--on-dark">
+          Pediatric rehab hardware, motion intelligence, and a CP network—built for serious markets.
+        </h1>
+        <p class="subhead subhead--on-dark">
+          MotorMate sells sensor-assisted therapy devices, publishes sourced CP awareness metrics, and operates a digital
+          catalog that connects families, clinicians, researchers, and pilot partners.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-primary" routerLink="/join">Start secure intake</a>
+          <a class="btn btn-secondary btn-secondary--on-dark" routerLink="/motormate">Explore the device</a>
         </div>
       </div>
-    </section>
-    <section class="relative overflow-hidden bg-white py-16">
-      <!-- Background gradient -->
-      <div class="absolute -z-10 inset-0 bg-gradient-to-br from-sky-100 via-indigo-50 to-white"></div>
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-slate-700">
-        <!-- Top heading (optional) -->
-        <!-- Responsive grid: iframe + card -->
-        <blockquote class="border-l-4 border-sky-300 pl-4 italic mt-4">
-          In the US, there are nearly 2 CP births per 1000 people. Worldwide that number can be almost double
-          within developing countries due to lack of proper nutrition and pre-natal care for expecting mothers.
-          <h6>Source: National Institute of Health</h6>
-        </blockquote>
-        <div class="grid md:grid-cols-2 gap-4 items-start">
-          <!-- Worldometer iframe -->
-          <div class="flex flex-col items-center">
-            <iframe
-              src="https://www.worldometers.info/world-population/"
-              class="border-0 w-full rounded-2xl max-w-md"
-              height="400"
-              scrolling="no"
-              loading="lazy"
-            ></iframe>
-          </div>
-          <!-- Calculator card -->
-          <div class="flex justify-center">
-            <app-calc-card></app-calc-card>
 
-          </div>
-        </div>
+      <aside class="card card-glass hero-panel slide-in-right">
+        <span class="eyebrow eyebrow--glass">Executive snapshot</span>
+        <h2 class="section-title section-title--compact">
+          Revenue-grade hardware, validated pilots, and network leverage.
+        </h2>
+        <p class="muted muted--glass">
+          The thesis is intentionally narrow: build a device buyers can trial, pair it with credible CP population framing,
+          and route demand through a searchable ecosystem—not a generic charity story.
+        </p>
+        <ul class="feature-list feature-list--tight">
+          <li>Clinical-adjacent positioning without overclaiming outcomes</li>
+          <li>Motion metrics that support sales conversations</li>
+          <li>Catalog + map surfaces for high-intent discovery</li>
+        </ul>
+      </aside>
+    </div>
 
-        <!-- Bottom text -->
-        <div class="space-y-4 text-lg">
+    <div class="container hero-trust-wrap">
+      <ul class="trust-strip motion-buffer" aria-label="MotorMate focus areas">
+        <li>Hardware &amp; pilots</li>
+        <li>Sourced CP metrics</li>
+        <li>Digital network layer</li>
+        <li>Security-first intake</li>
+      </ul>
+    </div>
+  </section>
 
+  <section class="section metrics-band" id="market-signal">
+    <div class="container">
+      <header class="metrics-intro motion-buffer">
+        <span class="eyebrow eyebrow--on-dark-metrics">Market signal</span>
+        <h2 class="section-title section-title--on-dark">
+          CP scale is measurable. Digital infrastructure for families and clinics still lags.
+        </h2>
+        <p class="section-kicker section-kicker--on-dark">
+          These indicators frame urgency for buyers and partners—without pretending to be a live clinical registry.
+        </p>
+      </header>
 
-          <blockquote>
-            Click on the interactive map below. If you have CP, it is very likely that someone, somewhere in this world has the same conditions as you.
-            You are not alone in your challenges and our goal is to help you improve your quality of life.
-            We look forward to your entry on in the <a href="/join">CP catalog</a> to get started.
-          </blockquote>
-        </div>
+      <div class="metrics-dashboard grid three-col motion-buffer">
+        <app-live-counter
+          tone="on-dark"
+          label="Estimated global CP population"
+          [initialValue]="globalCpPopulation"
+          [ratePerSecond]="cpBirthRatePerSecond"
+          storageKey="motormate-global-cp-counter"
+          description="A top-level market-awareness indicator for the worldwide CP community."
+          sourceLabel="Cerebral Palsy Foundation"
+          sourceUrl="https://www.yourcpf.org/"
+          sourceDetail="The CP Foundation commonly cites about 17 million people living with cerebral palsy globally. The live tick uses an estimated global rate of roughly one child born with CP every two minutes, derived from global births and published prevalence ranges."
+        ></app-live-counter>
 
-        <!-- Map component -->
-        <div class="mt-10">
-          <app-map></app-map>
-        </div>
+        <app-live-counter
+          tone="on-dark"
+          label="Estimated CP births today"
+          [initialValue]="0"
+          [ratePerSecond]="cpBirthRatePerSecond"
+          [startFromDayStart]="true"
+          description="Daily incidence estimate used to communicate market urgency and awareness."
+          sourceLabel="Calculated estimate"
+          sourceDetail="This is a calculated estimate, not a diagnosis feed. It resets daily and uses the same one-per-two-minutes global rate so it does not imply a live clinical registry."
+        ></app-live-counter>
 
+        <app-live-counter
+          tone="on-dark"
+          label="Estimated U.S. children impacted"
+          [initialValue]="usChildrenWithCp"
+          [ratePerSecond]="0"
+          description="U.S. pediatric awareness estimate based on CDC prevalence data."
+          sourceLabel="CDC CP data"
+          sourceUrl="https://www.cdc.gov/cerebral-palsy/data/index.html"
+          sourceDetail="CDC reports cerebral palsy affects about 1 in 345 children in the United States. This display uses a rounded estimate for readability and does not tick."
+        ></app-live-counter>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Value Props -->
-    <section class="py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-3 gap-5">
-          <div class="bg-white rounded-2xl">
-            <h3 class="font-semibold text-slate-900">Live CP Catalog</h3>
-            <p class="mt-2 text-slate-700">Searchable directory connecting parents, patients, clinicians, and advocates. Secure intake powered by Google Forms/Sheets.</p>
-          </div>
-          <div class="bg-white rounded-2xl">
-            <h3 class="font-semibold text-slate-900">MotorMate Device</h3>
-            <p class="mt-2 text-slate-700">Patent‑pending, sensor‑based training with game loops and data dashboards for home or clinic.</p>
-          </div>
-          <div class="bg-white rounded-2xl">
-            <h3 class="font-semibold text-slate-900">Partnerships</h3>
-            <p class="mt-2 text-slate-700">Clinics, schools, and product teams collaborate with us on pilots, research, and outreach.</p>
-          </div>
-        </div>
+  <section class="section surface-blue platform-section">
+    <div class="container">
+      <div class="container-narrow text-center motion-buffer platform-intro">
+        <span class="eyebrow">Platform architecture</span>
+        <h2 class="section-title">Three lines of business. One product narrative.</h2>
+        <p class="section-kicker mx-auto">
+          MotorMate is a commercial rehab technology company: sell hardware, earn pilot evidence, and compound distribution
+          through the CP Catalog and map surfaces.
+        </p>
       </div>
-    </section>
 
-    <!-- CTA Band -->
-    <section class="py-12 bg-gradient-to-r from-indigo-50 to-sky-50 border-y">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-2xl font-extrabold text-slate-900">Ready to join or partner?</h2>
-        <p class="mt-2 text-slate-700">Add your family or organization to our community and get updates on MotorMate pilots.</p>
-        <div class="mt-5 flex flex-wrap justify-center gap-3">
-          <a class="bg-[--brand] text-white px-5 py-3 rounded-xl hover:opacity-90" href="/join">Join</a>
-          <a class="bg-white border border-slate-300 px-5 py-3 rounded-xl hover:bg-slate-50" href="/partner">Get Involved</a>
-        </div>
+      <div class="grid three-col motion-buffer platform-grid">
+        <article class="card platform-pillar">
+          <span class="platform-icon" aria-hidden="true">01</span>
+          <h3>Device</h3>
+          <p class="muted">
+            Sensor-assisted therapy hardware positioned for pilots, clinics, and early buyers—with motion signals that
+            support validation, not vanity metrics.
+          </p>
+          <a class="small font-semibold" routerLink="/motormate">Device overview →</a>
+        </article>
+        <article class="card platform-pillar">
+          <span class="platform-icon" aria-hidden="true">02</span>
+          <h3>Data</h3>
+          <p class="muted">
+            CP prevalence and incidence framing drawn from public sources—used to explain market size, urgency, and trust,
+            not to substitute for regulated clinical claims.
+          </p>
+          <a class="small font-semibold" routerLink="/map">Impact map →</a>
+        </article>
+        <article class="card platform-pillar">
+          <span class="platform-icon" aria-hidden="true">03</span>
+          <h3>Network</h3>
+          <p class="muted">
+            A searchable catalog for organizations, programs, and services—built so high-intent users can move from
+            awareness to action quickly.
+          </p>
+          <a class="small font-semibold" routerLink="/cp-catalog">Browse the catalog →</a>
+        </article>
       </div>
-    </section>
-  </main>
 
+      <div class="btn-row justify-center motion-buffer">
+        <a class="btn btn-primary" routerLink="/join">Join the pipeline</a>
+        <a class="btn btn-secondary" routerLink="/partner">Discuss a pilot</a>
+      </div>
+    </div>
+  </section>
 
+  <section class="section map-intel-section">
+    <div class="container">
+      <app-cp-impact-map></app-cp-impact-map>
+    </div>
+  </section>
+
+  <section class="section-compact band cta-band">
+    <div class="container split">
+      <div class="motion-buffer">
+        <span class="eyebrow">Conversion ask</span>
+        <h2 class="section-title">Buyer, pilot site, advisor, or catalog member—pick your lane.</h2>
+        <p class="subhead">
+          MotorMate is assembling early adopters, clinical validators, commercial partners, and catalog participants. If you
+          are evaluating hardware, running a pilot, or representing the CP ecosystem, the funnel starts here.
+        </p>
+      </div>
+      <div class="btn-row slide-in-right">
+        <a class="btn btn-primary" routerLink="/join">Share your interest</a>
+        <a class="btn btn-secondary" href="mailto:info@motormate.health">Email MotorMate</a>
+      </div>
+    </div>
+  </section>
+</main>
